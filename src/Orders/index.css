@@ -1,0 +1,16 @@
+.ListContainer {
+  margin-bottom: 16px;
+}
+
+.SearchInput {
+  width: 200px;
+  margin-right: 16px;
+}
+
+.CreateButton {
+  margin-right: 16px;
+}
+
+.NumberInput {
+  width: 100%;
+}
