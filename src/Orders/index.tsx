@@ -81,18 +81,20 @@ const Orders: React.FC = () => {
   );
 
   const handleUpdateOrder = useCallback(() => {
-    form.validateFields().then((values) => {
-      axios
-        .put(`${API_URL}/orders/${currentOrder.orderId}`, values)
-        .then(() => {
-          fetchOrders();
-          handleCloseModal();
-          messageApi.success("订单更新成功");
-        })
-        .catch((error) => {
-          console.error("Error updating order:", error);
-        });
-    });
+    form
+      .validateFields()
+      .then((values) => {
+        axios
+          .put(`${API_URL}/orders/${currentOrder.orderId}`, values)
+          .then(() => {
+            fetchOrders();
+            handleCloseModal();
+            messageApi.success("订单更新成功");
+          })
+          .catch((error) => {
+            console.error("Error updating order:", error);
+          });
+      });
   }, [currentOrder.orderId, fetchOrders, form, handleCloseModal, messageApi]);
 
   const handleDeleteOrder = useCallback(
@@ -296,7 +298,7 @@ const Orders: React.FC = () => {
           <Form.Item
             name="amount"
             label="金额"
-            rules={[{ required: true, type: "number", min: 0 }]}
+            rules={[{ required: true, min: 0 }]}
           >
             <InputNumber prefix="￥" className="NumberInput" />
           </Form.Item>
